@@ -5,6 +5,9 @@ import numpy as np
 from mpl_toolkits.mplot3d import axes3d
 from sklearn import linear_model
 
+import sys
+sys.path.append("C:\Users\HTDA\Coursera-Stanford-ML-Python\ex1")
+
 from gradientDescent import gradientDescent
 from computeCost import computeCost
 from warmUpExercise import warmUpExercise
@@ -41,10 +44,10 @@ print 'Running warmUpExercise ...'
 print '5x5 Identity Matrix:'
 warmup = warmUpExercise()
 print warmup
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 # ======================= Part 2: Plotting =======================
-data = np.loadtxt('ex1data1.txt', delimiter=',')
+data = np.loadtxt('C:\Users\HTDA\Coursera-Stanford-ML-Python\ex1\ex1data1.txt', delimiter=',')
 m = data.shape[0]
 X = np.vstack(zip(np.ones(m),data[:,0]))
 y = data[:, 1]
@@ -53,14 +56,13 @@ y = data[:, 1]
 # Note: You have to complete the code in plotData.py
 print 'Plotting Data ...'
 plotData(data)
-show()
+#show()
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 # =================== Part 3: Gradient descent ===================
 print 'Running Gradient Descent ...'
 theta = np.zeros(2)
-
 # compute and display initial cost
 J = computeCost(X, y, theta)
 print 'cost: %0.4f ' % J
@@ -81,9 +83,9 @@ plt.figure()
 plotData(data)
 plt.plot(X[:, 1], X.dot(theta), '-', label='Linear regression')
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
-show()
+#show()
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 # Predict values for population sizes of 35,000 and 70,000
 predict1 = np.array([1, 3.5]).dot(theta)
@@ -121,9 +123,9 @@ ax.plot_surface(theta0_vals, theta1_vals, J_vals, rstride=8, cstride=8, alpha=0.
 ax.set_xlabel(r'$\theta_0$')
 ax.set_ylabel(r'$\theta_1$')
 ax.set_zlabel(r'J($\theta$)')
-show()
+#show()
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 # Contour plot
 plt.figure()
@@ -134,9 +136,9 @@ plt.clabel(ax, inline=1, fontsize=10)
 plt.xlabel(r'$\theta_0$')
 plt.ylabel(r'$\theta_1$')
 plt.plot(0.0, 0.0, 'rx', linewidth=2, markersize=10)
-show()
+#show()
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 # =============Use Scikit-learn =============
 regr = linear_model.LinearRegression(fit_intercept=False, normalize=True)

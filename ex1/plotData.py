@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 def plotData(data):
     """
@@ -19,5 +18,8 @@ def plotData(data):
 #       markers larger by using plot(..., 'rx', 'MarkerSize', 10);
 
     plt.figure()  # open a new figure window
+    plt.plot(data[:,0],data[:,1], 'rx', markersize=10)
+    plt.xlabel("Profit in $10,000s');")
+    plt.ylabel("Population of City in 10,000s")
 
 # ============================================================
