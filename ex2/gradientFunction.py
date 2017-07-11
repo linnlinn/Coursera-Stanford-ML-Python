@@ -19,5 +19,6 @@ def gradientFunction(theta, X, y):
 
 
 # =============================================================
+    grad = 0
 
     return grad
