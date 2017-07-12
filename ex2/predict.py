@@ -1,4 +1,4 @@
-from numpy import round
+from numpy import round, dot
 
 from sigmoid import sigmoid
 
@@ -9,13 +9,6 @@ def predict(theta, X):
     (i.e., if sigmoid(theta'*x) >= 0.5, predict 1)
     """
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Complete the following code to make predictions using
-#               your learned logistic regression parameters.
-#               You should set p to a vector of 0's and 1's
-#
-
-
-# =========================================================================
+    p = round(sigmoid(dot(X,theta)))
 
     return p

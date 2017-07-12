@@ -6,11 +6,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import minimize
 
+import sys
+sys.path.append("C:\Users\HTDA\Coursera-Stanford-ML-Python-local\ex2")
+
 from costFunction import costFunction
 from gradientFunction import gradientFunction
 from sigmoid import sigmoid
 from predict import predict
-from show import show
 
 ## Machine Learning Online Class - Exercise 2: Logistic Regression
 #
@@ -42,7 +44,7 @@ from ml import plotData, plotDecisionBoundary
 #  The first two columns contains the exam scores and the third column
 #  contains the label.
 
-data = np.loadtxt('ex2data1.txt', delimiter=',')
+data = np.loadtxt('C:\Users\HTDA\Coursera-Stanford-ML-Python-local\ex2\ex2data1.txt', delimiter=',')
 X = data[:, 0:2]
 y = data[:, 2]
 
@@ -55,8 +57,7 @@ plt.legend(['Admitted', 'Not admitted'], loc='upper right', shadow=True, fontsiz
 
 plt.xlabel('Exam 1 score')
 plt.ylabel('Exam 2 score')
-show()
-raw_input("Program paused. Press Enter to continue...")
+
 
 
 # # ============ Part 2: Compute Cost and Gradient ============
@@ -69,6 +70,10 @@ X = np.concatenate((np.ones((m, 1)), X), axis=1)
 # Initialize fitting parameters
 initial_theta = np.zeros(n + 1)
 
+test_theta = np.array([-0.5 , -1.0 , -1.0])
+cost = costFunction(test_theta, X, y)
+print 'Cost at initial theta (zeros): %f' % cost
+                             
 # Compute and display initial cost and gradient
 cost = costFunction(initial_theta, X, y)
 print 'Cost at initial theta (zeros): %f' % cost
@@ -76,7 +81,6 @@ print 'Cost at initial theta (zeros): %f' % cost
 grad = gradientFunction(initial_theta, X, y)
 print 'Gradient at initial theta (zeros): ' + str(grad)
 
-raw_input("Program paused. Press Enter to continue...")
 
 # ============= Part 3: Optimizing using scipy  =============
 res = minimize(costFunction, initial_theta, method='TNC',
@@ -96,9 +100,7 @@ plotDecisionBoundary(theta, X, y)
 plt.legend(['Admitted', 'Not admitted'], loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 plt.xlabel('Exam 1 score')
 plt.ylabel('Exam 2 score')
-show()
 
-raw_input("Program paused. Press Enter to continue...")
 
 #  ============== Part 4: Predict and Accuracies ==============
 
@@ -113,5 +115,5 @@ p = predict(theta, X)
 acc = 1.0*np.where(p == y)[0].size/len(p) * 100
 print 'Train Accuracy: %f' % acc
 
-raw_input("Program paused. Press Enter to continue...")
+
 

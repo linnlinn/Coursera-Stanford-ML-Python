@@ -1,4 +1,4 @@
-from numpy import asfortranarray, squeeze, asarray
+from numpy import asfortranarray, squeeze, asarray, copy
 
 from gradientFunction import gradientFunction
 
@@ -12,12 +12,9 @@ def gradientFunctionReg(theta, X, y, Lambda):
     """
     m = len(y)   # number of training examples
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Compute the gradient of a particular choice of theta.
-#               Compute the partial derivatives and set grad to the partial
-#               derivatives of the cost w.r.t. each parameter in theta
-
-
-# =============================================================
+    theta0=copy(theta)
+    theta0[0]=0
+    
+    grad = gradientFunction(theta, X, y) + Lambda * theta0 / m
 
     return grad

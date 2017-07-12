@@ -1,6 +1,9 @@
 # Logistic Regression
 from matplotlib import use
 
+import sys
+sys.path.append("C:\Users\HTDA\Coursera-Stanford-ML-Python-local\ex2")
+
 use('TkAgg')
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,7 +12,6 @@ from scipy.optimize import minimize
 import pandas as pd
 
 from ml import mapFeature, plotData, plotDecisionBoundary
-from show import show
 from costFunctionReg import costFunctionReg
 from gradientFunctionReg import gradientFunctionReg
 from sigmoid import sigmoid
@@ -32,7 +34,6 @@ def plotBoundary(theta, X, y):
     # Labels and Legend
     plt.xlabel('Microchip Test 1')
     plt.ylabel('Microchip Test 2')
-    show()
 
 
 
@@ -51,8 +52,6 @@ plotData(X.values, y.values)
 # Labels and Legend
 plt.xlabel('Microchip Test 1')
 plt.ylabel('Microchip Test 2')
-show()
-raw_input("Program paused. Press Enter to continue...")
 
 
 # =========== Part 1: Regularized Logistic Regression ============
@@ -89,7 +88,6 @@ print 'lambda = ' + str(Lambda)
 print 'Cost at theta found by scipy: %f' % cost
 print 'theta:', ["%0.4f" % i for i in theta]
 
-raw_input("Program paused. Press Enter to continue...")
 
 plotBoundary(theta, X, y)
 
