@@ -11,12 +11,6 @@ def costFunctionReg(theta, X, y, Lambda):
     # Initialize some useful values
     m = len(y)   # number of training examples
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Compute the cost of a particular choice of theta.
-#               You should set J to the cost.
-#               Compute the partial derivatives and set grad to the partial
-#               derivatives of the cost w.r.t. each parameter in theta
-
-# =============================================================
+    J=costFunction(theta, X, y) + (sum(theta ** 2) - theta[0]**2) * Lambda/(2*m)
 
     return J
