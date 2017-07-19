@@ -3,7 +3,7 @@ from matplotlib import use
 use('TkAgg')
 import matplotlib.pyplot as plt
 
-from show import show
+#from show import show
 
 def displayData(X):
     """displays 2D data
@@ -47,5 +47,5 @@ def displayData(X):
     plt.set_cmap('gray')
 # Do not show axis
     plt.axis('off')
-    show()
+#    show()
 

@@ -42,6 +42,14 @@ def oneVsAll(X, y, num_labels, Lambda):
 
 
 # =========================================================================
+    for k in num_labels:
+        Yk=[1 if i==1 else 0 for i in y]
+        result = minimize(lrCostFunction, initial_theta, method='L-BFGS-B',
+                   jac=gradientFunctionReg, args=(X, Yk, Lambda),
+                   options={'gtol': 1e-4, 'disp': False, 'maxiter': 1000})
+        theta = result.x
+        cost = result.fun
+        all_theta[k] = theta
 
     return all_theta
 

@@ -23,6 +23,6 @@ def predict(Theta1, Theta2, X):
 #
 
 # =========================================================================
-
+    p=0
     return p + 1        # add 1 to offset index of maximum in A row
 

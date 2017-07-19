@@ -23,5 +23,7 @@ def lrCostFunction(theta, X, y, Lambda):
 
 
     # =============================================================
+    
+    J = costFunctionReg(theta, X, y, Lambda)
 
     return J
