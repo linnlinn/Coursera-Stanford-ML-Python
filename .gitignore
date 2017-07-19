@@ -9,3 +9,5 @@ token.txt
 \#*
 token.txt_
 .ipynb_checkpoints
+ex2/gradientFunction.py
+ex2/sigmoid.py
