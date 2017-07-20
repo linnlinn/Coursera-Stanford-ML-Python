@@ -8,6 +8,9 @@ from oneVsAll import oneVsAll
 from predictOneVsAll import predictOneVsAll
 from displayData import displayData
 
+import os;
+print os.getcwd();
+
 #  Instructions
 #  ------------
 # 
@@ -44,10 +47,10 @@ y = data['y']
 m, _ = X.shape
 
 # Randomly select 100 data points to display
-#rand_indices = np.random.permutation(range(m))
-#sel = X[rand_indices[0:100], :]
+rand_indices = np.random.permutation(range(m))
+sel = X[rand_indices[0:100], :]
 
-#displayData(sel)
+displayData(sel)
 
 #raw_input("Program paused. Press Enter to continue...")
 
@@ -64,7 +67,7 @@ print 'Training One-vs-All Logistic Regression...'
 Lambda = 0.1
 all_theta = oneVsAll(X, y, num_labels, Lambda)
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 
 ## ================ Part 3: Predict for One-Vs-All ================

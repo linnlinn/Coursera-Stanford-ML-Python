@@ -23,6 +23,10 @@ def predict(Theta1, Theta2, X):
 #
 
 # =========================================================================
-    p=0
+    X = np.column_stack((np.ones((m, 1)), X))
+    A2 = sigmoid(np.dot(X,Theta1.T))
+    
+    A2 = np.column_stack((np.ones((m, 1)), A2))
+    p = np.argmax(np.dot(A2,Theta2.T),axis=1)
     return p + 1        # add 1 to offset index of maximum in A row
 
