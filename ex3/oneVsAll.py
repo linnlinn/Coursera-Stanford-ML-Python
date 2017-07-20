@@ -42,8 +42,8 @@ def oneVsAll(X, y, num_labels, Lambda):
 
 
 # =========================================================================
-    for k in num_labels:
-        Yk=[1 if i==1 else 0 for i in y]
+    for k in range(num_labels):
+        Yk=np.asarray([1 if i==(k+1) else 0 for i in y])
         result = minimize(lrCostFunction, initial_theta, method='L-BFGS-B',
                    jac=gradientFunctionReg, args=(X, Yk, Lambda),
                    options={'gtol': 1e-4, 'disp': False, 'maxiter': 1000})

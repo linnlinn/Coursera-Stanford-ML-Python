@@ -35,20 +35,21 @@ num_labels = 10          # 10 labels, from 1 to 10
 #
 
 # Load Training Data
-print 'Loading and Visualizing Data ...'
+#print 'Loading and Visualizing Data ...'
 
-data = scipy.io.loadmat('ex3data1.mat') # training data stored in arrays X, y
+data = scipy.io.loadmat('ex3/ex3data1.mat') 
+# training data stored in arrays X, y
 X = data['X']
 y = data['y']
 m, _ = X.shape
 
 # Randomly select 100 data points to display
-rand_indices = np.random.permutation(range(m))
-sel = X[rand_indices[0:100], :]
+#rand_indices = np.random.permutation(range(m))
+#sel = X[rand_indices[0:100], :]
 
-displayData(sel)
+#displayData(sel)
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 ## ============ Part 2: Vectorize Logistic Regression ============
 #  In this part of the exercise, you will reuse your logistic regression

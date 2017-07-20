@@ -8,7 +8,6 @@ def costFunction(theta, X,y):
     from numpy import dot
 # Initialize some useful values
     m = y.size # number of training examples
-    
     first = -dot(y, log(sigmoid(dot(X,theta))))
     second = -dot((1-y), log(1-sigmoid(dot(X,theta))))
     #first = -dot(y, log(sigmoid(dot(X,theta))))

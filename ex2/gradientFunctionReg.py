@@ -1,4 +1,4 @@
-from numpy import asfortranarray, squeeze, asarray, copy
+from numpy import copy
 
 from gradientFunction import gradientFunction
 
