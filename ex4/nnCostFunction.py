@@ -1,7 +1,7 @@
 import numpy as np
 
 from ex2.sigmoid import sigmoid
-from sigmoidGradient import sigmoidGradient
+#from sigmoidGradient import sigmoidGradient
 
 
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, Lambda):
@@ -37,6 +37,27 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 #         variable J. After implementing Part 1, you can verify that your
 #         cost function computation is correct by verifying the cost
 #         computed in ex4.m
+
+    z2 = np.dot(np.column_stack((np.ones((m, 1)), X)), Theta1.T)
+    a2 = sigmoid(np.column_stack((np.ones((m, 1)), z2)))
+    
+    z3 = np.dot(a2, Theta2.T)
+    a3 = sigmoid(z3)
+    
+    nn_hx = a3.ravel()
+    #nn_y = np.repeat(y, num_labels)
+    nn_y=np.zeros(0)
+    for k in range(num_labels):
+        nn_y=np.append(nn_y,np.asarray([1 if i==(k+1) else 0 for i in y]))
+    MatY=np.reshape(nn_y, (num_labels,m)).T
+    
+    
+    #first = -np.dot(nn_y, np.log(nn_hx))
+    #second = -np.dot((1-nn_y), np.log(1-nn_hx))
+    first = -np.dot(MatY.T, np.log(a3))
+    second = -np.dot((1-MatY.T), np.log(1-a3))
+    J=(first+second)/m
+
 #
 # Part 2: Implement the backpropagation algorithm to compute the gradients
 #         Theta1_grad and Theta2_grad. You should return the partial derivatives of
@@ -67,8 +88,9 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 
     # =========================================================================
 
+    
     # Unroll gradient
-    grad = np.hstack((Theta1_grad.T.ravel(), Theta2_grad.T.ravel()))
-
+    #grad = np.hstack((Theta1_grad.T.ravel(), Theta2_grad.T.ravel()))
+    grad = 0
 
     return J, grad
