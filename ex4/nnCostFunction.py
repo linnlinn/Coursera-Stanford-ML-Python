@@ -1,7 +1,7 @@
 import numpy as np
 
 from ex2.sigmoid import sigmoid
-#from sigmoidGradient import sigmoidGradient
+from sigmoidGradient import sigmoidGradient
 
 
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, Lambda):
@@ -37,14 +37,14 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 #         variable J. After implementing Part 1, you can verify that your
 #         cost function computation is correct by verifying the cost
 #         computed in ex4.m
-
-    z2 = np.dot(np.column_stack((np.ones((m, 1)), X)), Theta1.T)
-    a2 = sigmoid(np.column_stack((np.ones((m, 1)), z2)))
-    
+    a1=np.column_stack((np.ones((m, 1)), X))
+    #z2 = np.dot(Theta1, a1.T).T
+    z2 = np.dot(a1,Theta1.T)
+    a2 = np.column_stack((np.ones((m, 1)),sigmoid(z2)))
     z3 = np.dot(a2, Theta2.T)
     a3 = sigmoid(z3)
     
-    nn_hx = a3.ravel()
+    nn_hx = a3.ravel(order='F')
     #nn_y = np.repeat(y, num_labels)
     nn_y=np.zeros(0)
     for k in range(num_labels):
@@ -52,11 +52,16 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     MatY=np.reshape(nn_y, (num_labels,m)).T
     
     
-    #first = -np.dot(nn_y, np.log(nn_hx))
-    #second = -np.dot((1-nn_y), np.log(1-nn_hx))
-    first = -np.dot(MatY.T, np.log(a3))
-    second = -np.dot((1-MatY.T), np.log(1-a3))
-    J=(first+second)/m
+    #first = -np.dot(MatY.ravel(), np.log(nn_hx))
+    #second = -np.dot((1-MatY.ravel()), np.log(1-nn_hx))
+    first = -np.dot(nn_y, np.log(nn_hx))
+    second = -np.dot((1-nn_y), np.log(1-nn_hx))
+    #first = -np.dot(MatY, np.log(a3))
+    #second = -np.dot((1-MatY), np.log(1-a3))
+    reg = (Theta1[:,1:]**2).sum() + (Theta2[:,1:]**2).sum()
+    J=(first+second)/m + reg*Lambda/(2.*m)
+      
+    #J = ((-MatY * np.log(a3) - (1-MatY) * np.log(1-a3))/m).sum()
 
 #
 # Part 2: Implement the backpropagation algorithm to compute the gradients
@@ -74,6 +79,13 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 #               over the training examples if you are implementing it for the 
 #               first time.
 #
+
+    delta3 = a3 - MatY
+
+    delta2 = np.dot(delta3,Theta2)[:,1:] * sigmoidGradient(z2)
+    
+    Theta1_grad = (np.dot(delta2.T,a1)-np.array(np.dot(np.asmatrix(delta2[0]).T,np.asmatrix(a1[0]))))/m
+    Theta2_grad = np.dot(delta3.T,a2)/m
 # Part 3: Implement regularization with the cost function and gradients.
 #
 #         Hint: You can implement this around the code for
@@ -87,10 +99,8 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     # -------------------------------------------------------------
 
     # =========================================================================
-
     
-    # Unroll gradient
-    #grad = np.hstack((Theta1_grad.T.ravel(), Theta2_grad.T.ravel()))
-    grad = 0
+    #Unroll gradient
+    grad = np.hstack((Theta1_grad.T.ravel(), Theta2_grad.T.ravel()))
 
     return J, grad
