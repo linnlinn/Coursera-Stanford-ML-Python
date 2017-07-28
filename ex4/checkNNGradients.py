@@ -2,6 +2,8 @@ import numpy as np
 
 from debugInitializeWeights import debugInitializeWeights
 from computeNumericalGradient import computeNumericalGradient
+#from ex4.debugInitializeWeights import debugInitializeWeights
+#from ex4.computeNumericalGradient import computeNumericalGradient
 from nnCostFunction import nnCostFunction
 
 def checkNNGradients(Lambda = 0):

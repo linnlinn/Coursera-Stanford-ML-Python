@@ -1,6 +1,7 @@
 import numpy as np
 
 from ex2.sigmoid import sigmoid
+#from ex4.sigmoidGradient import sigmoidGradient
 from sigmoidGradient import sigmoidGradient
 
 
@@ -83,8 +84,8 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     delta3 = a3 - MatY
 
     delta2 = np.dot(delta3,Theta2)[:,1:] * sigmoidGradient(z2)
-    
-    Theta1_grad = (np.dot(delta2.T,a1)-np.array(np.dot(np.asmatrix(delta2[0]).T,np.asmatrix(a1[0]))))/m
+    delta2[:,0]=np.zeros(m)
+    Theta1_grad = np.dot(delta2.T,a1)/m
     Theta2_grad = np.dot(delta3.T,a2)/m
 # Part 3: Implement regularization with the cost function and gradients.
 #
@@ -101,6 +102,7 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     # =========================================================================
     
     #Unroll gradient
-    grad = np.hstack((Theta1_grad.T.ravel(), Theta2_grad.T.ravel()))
+    Ngrad = np.hstack((Theta1_grad.T.ravel(), Theta2_grad.T.ravel()))
 
-    return J, grad
+    return J, Ngrad
+#___________________________________
