@@ -84,9 +84,10 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     delta3 = a3 - MatY
 
     delta2 = np.dot(delta3,Theta2)[:,1:] * sigmoidGradient(z2)
-    delta2[:,0]=np.zeros(m)
-    Theta1_grad = np.dot(delta2.T,a1)/m
-    Theta2_grad = np.dot(delta3.T,a2)/m
+    Theta1[:,0]=np.zeros(Theta1.shape[0])
+    Theta2[:,0]=np.zeros(Theta2.shape[0])
+    Theta1_grad = np.dot(delta2.T,a1)/m + Lambda * Theta1/m
+    Theta2_grad = np.dot(delta3.T,a2)/m + Lambda * Theta2/m
 # Part 3: Implement regularization with the cost function and gradients.
 #
 #         Hint: You can implement this around the code for

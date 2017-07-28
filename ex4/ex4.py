@@ -26,6 +26,8 @@ from ex4.sigmoidGradient import sigmoidGradient
 from ex4.randInitializeWeights import randInitializeWeights
 from ex4.checkNNGradients import checkNNGradients
 
+np.set_printoptions(threshold=np.inf)
+
 ## Setup the parameters you will use for this exercise
 input_layer_size  = 400  # 20x20 Input Images of Digits
 hidden_layer_size = 25   # 25 hidden units
