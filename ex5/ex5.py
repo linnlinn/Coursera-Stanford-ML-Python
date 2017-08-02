@@ -1,15 +1,14 @@
-
 import scipy.io
 import matplotlib.pyplot as plt
 import numpy as np
 
-from linearRegCostFunction import linearRegCostFunction
-from trainLinearReg import trainLinearReg
-from learningCurve import learningCurve
-from polyFeatures import polyFeatures
-from featureNormalize import featureNormalize
-from plotFit import plotFit
-from validationCurve import validationCurve
+from ex5.linearRegCostFunction import linearRegCostFunction
+from ex5.trainLinearReg import trainLinearReg
+from ex5.learningCurve import learningCurve
+from ex5.polyFeatures import polyFeatures
+from ex5.featureNormalize import featureNormalize
+from ex5.plotFit import plotFit
+from ex5.validationCurve import validationCurve
 
 ## Machine Learning Online Class
 #  Exercise 5 | Regularized Linear Regression and Bias-Variance
@@ -39,7 +38,7 @@ print 'Loading and Visualizing Data ...'
 
 # Load from ex5data1: 
 # You will have X, y, Xval, yval, Xtest, ytest in your environment
-data = scipy.io.loadmat('ex5data1.mat')
+data = scipy.io.loadmat('ex5/ex5data1.mat')
 
 # m = Number of examples
 X = data['X'][:, 0]
@@ -55,7 +54,7 @@ plt.scatter(X, y, marker='x', s=60, edgecolor='r', lw=1.5)
 plt.ylabel('Water flowing out of the dam (y)')            # Set the y-axis label
 plt.xlabel('Change in water level (x)')     # Set the x-axis label
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 ## =========== Part 2: Regularized Linear Regression Cost =============
 #  You should now implement the cost function for regularized linear 
@@ -67,7 +66,7 @@ J = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, 1)[0]
 
 print 'Cost at theta = [1  1]: %f \n(this value should be about 303.993192)\n' % J
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 
 
 ## =========== Part 3: Regularized Linear Regression Gradient =============
 #  You should now implement the gradient for regularized linear 
@@ -79,7 +78,7 @@ J, grad = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, 1)
 
 print 'Gradient at theta = [1  1]:  [%f %f] \n(this value should be about [-15.303016 598.250744])\n' %(grad[0], grad[1])
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 
 
 
 ## =========== Part 4: Train Linear Regression =============
@@ -101,7 +100,7 @@ plt.ylabel('Water flowing out of the dam (y)')            # Set the y-axis label
 plt.xlabel('Change in water level (x)')     # Set the x-axis label
 plt.plot(X, np.column_stack((np.ones(m), X)).dot(theta), '--', lw=2.0)
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 
 
 
 ## =========== Part 5: Learning Curve for Linear Regression =============
@@ -115,8 +114,8 @@ Lambda = 0
 error_train, error_val = learningCurve(np.column_stack((np.ones(m), X)), y,
                                        np.column_stack((np.ones(Xval.shape[0]), Xval)), yval, Lambda)
 plt.figure()
-plt.plot(range(m), error_train, color='b', lw=0.5, label='Train')
-plt.plot(range(m), error_val, color='r', lw=0.5, label='Cross Validation')
+plt.plot(range(1,m+1), error_train, color='b', lw=0.5, label='Train')
+plt.plot(range(1,m+1), error_val, color='r', lw=0.5, label='Cross Validation')
 plt.title('Learning curve for linear regression')
 plt.legend()
 plt.xlabel('Number of training examples')
@@ -130,7 +129,7 @@ print 'Training Examples\tTrain Error\tCross Validation Error'
 for i in range(m):
     print '  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i])
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 
 
 ## =========== Part 6: Feature Mapping for Polynomial Regression =============
 #  One solution to this is to use polynomial regression. You should now
@@ -199,7 +198,7 @@ print '# Training Examples\tTrain Error\tCross Validation Error'
 for i in range(m):
     print '  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i])
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 
 
 ## =========== Part 8: Validation for Selecting Lambda =============
 #  You will now implement validationCurve to test various values of 
@@ -218,4 +217,4 @@ print 'Lambda\t\tTrain Error\tValidation Error'
 for i in range(Lambda_vec.size):
     print ' %f\t%f\t%f' % (Lambda_vec[i], error_train[i], error_val[i])
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 

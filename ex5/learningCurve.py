@@ -53,7 +53,14 @@ def learningCurve(X, y, Xval, yval, Lambda):
 #
 
 # ---------------------- Sample Solution ----------------------
+#X = np.column_stack((np.ones(m), X))
+#Xval = np.column_stack((np.ones(Xval.shape), Xval))
 
+    for i in range(m):
+        theta = trainLinearReg(X[:i+1],y[:i+1],Lambda)
+        error_train[i] = linearRegCostFunction(X[:i+1],y[:i+1], theta, 0)[0]
+        error_val[i] = linearRegCostFunction(Xval,yval, theta, 0)[0]
+        
 
 
 # -------------------------------------------------------------------------
