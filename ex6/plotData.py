@@ -16,5 +16,5 @@ def plotData(X, y):
 # Plot Examples
     plt.plot(X[pos,0], X[pos, 1], 'k+', linewidth=1, markersize=7)
     plt.plot(X[neg,0], X[neg, 1], 'ko', color='y', markersize=7)
-    show()
+#    show()
 
