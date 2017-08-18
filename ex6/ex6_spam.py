@@ -34,7 +34,7 @@ from getVocabList import getVocabList
 print 'Preprocessing sample email (emailSample1.txt)'
 
 # Extract Features
-file = open('emailSample1.txt', 'r')
+file = open('ex6/emailSample1.txt', 'r')
 file_contents = file.readlines()
 word_indices  = processEmail(''.join(file_contents))
 
@@ -42,7 +42,7 @@ word_indices  = processEmail(''.join(file_contents))
 print 'Word Indices: '
 print word_indices
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 ## ==================== Part 2: Feature Extraction ====================
 #  Now, you will convert each email into a vector of features in R^n.

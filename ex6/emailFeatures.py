@@ -51,5 +51,5 @@ def emailFeatures(word_indices):
 
 
 # =========================================================================
-
+    x=[int(i in word_indices) for i in range(n)]
     return x

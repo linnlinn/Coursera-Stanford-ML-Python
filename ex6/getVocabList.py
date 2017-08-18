@@ -8,6 +8,7 @@ def getVocabList():
     """
 
 ## Read the fixed vocabulary list
+    #with open('ex6/vocab.txt') as f:
     with open('vocab.txt') as f:
 
 # Store all dictionary words in cell array vocab{}

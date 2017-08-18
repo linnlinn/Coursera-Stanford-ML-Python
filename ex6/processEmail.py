@@ -104,8 +104,10 @@ def processEmail(email_contents):
         # Note: You can use strcmp(str1, str2) to compare two strings (str1 and
         #       str2). It will return 1 only if the two strings are equivalent.
         #
-
-
+        try:
+            word_indices.append(vocabList.index(str))
+        except:
+            continue
 
 
         # =============================================================
