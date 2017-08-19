@@ -8,6 +8,9 @@ def pca(X):
 
     # Useful values
     m, n = X.shape
+    U=np.zeros(n)
+    S=np.zeros(n)
+    V=np.zeros(n)
 
     # You need to return the following variables correctly.
 

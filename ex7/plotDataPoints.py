@@ -20,4 +20,4 @@ def plotDataPoints(X, idx):
     idxn = idx.astype('float')/max(idx.astype('float'))
     colors = map(idxn)
     plt.scatter(X[:, 0], X[:, 1], 15, edgecolors=colors, marker='o', facecolors='none', lw=0.5)
-    show()
+ #   show()

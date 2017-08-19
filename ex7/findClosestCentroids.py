@@ -24,6 +24,9 @@ def findClosestCentroids(X, centroids):
 
 
 # =============================================================
-
-    return val, idx
+    dist=[]
+    for centr in centroids:
+        dist.append(np.linalg.norm(X-centr,axis=1))
+    idx=np.argmin(dist,axis=0)
+    return idx, idx
 

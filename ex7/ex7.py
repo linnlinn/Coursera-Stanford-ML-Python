@@ -30,16 +30,16 @@ import scipy.io
 import scipy.misc
 import matplotlib.pyplot as plt
 
-from findClosestCentroids import findClosestCentroids
-from computeCentroids import computeCentroids
-from runkMeans import runkMeans
-from kMeansInitCentroids import kMeansInitCentroids
-from show import show
+from ex7.findClosestCentroids import findClosestCentroids
+from ex7.computeCentroids import computeCentroids
+from ex7.runkMeans import runkMeans
+from ex7.kMeansInitCentroids import kMeansInitCentroids
+#from show import show
 
 print 'Finding closest centroids.'
 
 # Load an example dataset that we will be using
-data = scipy.io.loadmat('ex7data2.mat')
+data = scipy.io.loadmat('ex7/ex7data2.mat')
 X = data['X']
 
 # Select an initial set of centroids
@@ -54,7 +54,7 @@ print 'Closest centroids for the first 3 examples:'
 print idx[0:3].tolist()
 print '(the closest centroids should be 0, 2, 1 respectively)'
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 
 
 ## ===================== Part 2: Compute Means =========================
 #  After implementing the closest centroids function, you should now

@@ -13,11 +13,12 @@ def computeCentroids(X, idx, K):
 
 # Useful variables
     m, n = X.shape
-
 # You need to return the following variables correctly.
     centroids = []
-
-
+    for i in range(K):
+        Xsub=X[idx==i,:]
+        centroids.append(np.mean(Xsub, axis=0))
+        
 # ====================== YOUR CODE HERE ======================
 # Instructions: Go over every centroid and compute mean of all points that
 #               belong to it. Concretely, the row vector centroids(i, :)

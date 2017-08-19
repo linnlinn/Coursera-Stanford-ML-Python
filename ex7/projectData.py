@@ -1,3 +1,4 @@
+import numpy as np
 def projectData(X, U, K):
     """computes the projection of
     the normalized inputs X into the reduced dimensional space spanned by
@@ -17,5 +18,5 @@ def projectData(X, U, K):
 
     # =============================================================
 
-
+    Z = np.zeros(10)
     return Z
