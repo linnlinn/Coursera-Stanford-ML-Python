@@ -74,7 +74,7 @@ print '   [ 2.428301 3.157924 ]'
 print '   [ 5.813503 2.633656 ]'
 print '   [ 7.119387 3.616684 ]'
 
-raw_input("Program paused. Press Enter to continue...") 
+#raw_input("Program paused. Press Enter to continue...") 
 
 
 ## =================== Part 3: K-Means Clustering ======================
@@ -86,7 +86,7 @@ raw_input("Program paused. Press Enter to continue...")
 print 'Running K-Means clustering on example dataset.'
 
 # Load an example dataset
-data = scipy.io.loadmat('ex7data2.mat')
+data = scipy.io.loadmat('ex7/ex7data2.mat')
 X = data['X']
 
 # Settings for running K-Means
