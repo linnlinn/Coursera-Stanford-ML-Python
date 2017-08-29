@@ -25,15 +25,15 @@ import scipy.misc
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-from featureNormalize import featureNormalize
-from pca import pca
-from projectData import projectData
-from recoverData import recoverData
-from kMeansInitCentroids import kMeansInitCentroids
-from runkMeans import runkMeans
-from plotDataPoints import plotDataPoints
+from ex7.featureNormalize import featureNormalize
+from ex7.pca import pca
+from ex7.projectData import projectData
+from ex7.recoverData import recoverData
+from ex7.kMeansInitCentroids import kMeansInitCentroids
+from ex7.runkMeans import runkMeans
+from ex7.plotDataPoints import plotDataPoints
 from ex3.displayData import displayData
-from show import show
+#from show import show
 
 ## ================== Part 1: Load Example Dataset  ===================
 #  We start this exercise by using a small dataset that is easily to
@@ -42,16 +42,16 @@ from show import show
 print 'Visualizing example dataset for PCA.'
 #  The following command loads the dataset. You should now have the 
 #  variable X in your environment
-data = scipy.io.loadmat('ex7data1.mat')
+data = scipy.io.loadmat('ex7/ex7data1.mat')
 X = data['X']
 
 #  Visualize the example dataset
 plt.scatter(X[:, 0], X[:, 1], marker='o', color='b', facecolors='none', lw=1.0)
 plt.axis([0.5, 6.5, 2, 8])
 plt.axis('equal')
-show()
+#show()
 
-raw_input('Program paused. Press Enter to continue...')  
+#raw_input('Program paused. Press Enter to continue...')  
 
 ## =============== Part 2: Principal Component Analysis ===============
 #  You should now implement PCA, a dimension reduction technique. You
@@ -72,13 +72,13 @@ U, S, V = pca(X_norm)
 mu2 = mu + 1.5 * S.dot(U.T)
 plt.plot([mu[0], mu2[0, 0]], [mu[1], mu2[0, 1]], '-k', lw=2)
 plt.plot([mu[0], mu2[1, 0]], [mu[1], mu2[1, 1]], '-k', lw=2)
-show()
+#show()
 
 print 'Top eigenvector: '
 print ' U(:,1) = %f %f ', U[0,0], U[1,0]
 print '(you should expect to see -0.707107 -0.707107)'
 
-raw_input('Program paused. Press Enter to continue...')  
+#raw_input('Program paused. Press Enter to continue...')  
 
 
 ## =================== Part 3: Dimension Reduction ===================
@@ -96,7 +96,7 @@ plt.figure()
 plt.scatter(X_norm[:, 0], X_norm[:, 1], marker='o', color='b', facecolors='none', lw=1.0)
 plt.axis([-4, 3, -4, 3]) #axis square
 plt.axis('equal')
-show()
+#show()
 
 #  Project the data onto K = 1 dimension
 K = 1
@@ -113,8 +113,8 @@ plt.scatter(X_rec[:, 0], X_rec[:, 1], marker='o', color='r', facecolor='none', l
 for i in range(len(X_norm)):
     plt.plot([X_norm[i, 0], X_rec[i, 0]], [X_norm[i, 1], X_rec[i, 1]], '--k')
 
-show()
-raw_input('Program paused. Press Enter to continue...')  
+#show()
+#raw_input('Program paused. Press Enter to continue...')  
 
 ## =============== Part 4: Loading and Visualizing Face Data =============
 #  We start the exercise by first loading and visualizing the dataset.
@@ -123,13 +123,13 @@ raw_input('Program paused. Press Enter to continue...')
 print 'Loading face dataset.'
 
 #  Load Face dataset
-data = scipy.io.loadmat('ex7faces.mat')
+data = scipy.io.loadmat('ex7/ex7faces.mat')
 X = data['X']
 
 #  Display the first 100 faces in the dataset
 displayData(X[0:100, :])
 
-raw_input('Program paused. Press Enter to continue...')  
+#raw_input('Program paused. Press Enter to continue...')  
 
 ## =========== Part 5: PCA on Face Data: Eigenfaces  ===================
 #  Run PCA and visualize the eigenvectors which are in this case eigenfaces
@@ -147,7 +147,7 @@ U, S, V = pca(X_norm)
 #  Visualize the top 36 eigenvectors found
 displayData(U[:, 1:36].T)
 
-raw_input('Program paused. Press Enter to continue...')  
+#raw_input('Program paused. Press Enter to continue...')  
 
 ## ============= Part 6: Dimension Reduction for Faces =================
 #  Project images to the eigen space using the top k eigenvectors 
@@ -183,8 +183,8 @@ plt.subplot(1, 2, 2)
 displayData(X_rec[:100,:])
 plt.title('Recovered faces')
 plt.axis('equal')
-show()
-raw_input('Program paused. Press Enter to continue...')  
+#show()
+#raw_input('Program paused. Press Enter to continue...')  
 
 
 ## === Part 8(a): Optional (ungraded) Exercise: PCA for Visualization ===
@@ -195,7 +195,7 @@ raw_input('Program paused. Press Enter to continue...')
 
 # Re-load the image from the previous exercise and run K-Means on it
 # For this to work, you need to complete the K-Means assignment first
-A = scipy.misc.imread('bird_small.png')
+A = scipy.misc.imread('ex7/bird_small.png')
 
 # If imread does not work for you, you can try instead
 #   load ('bird_small.mat')

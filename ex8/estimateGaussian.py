@@ -10,7 +10,8 @@ def estimateGaussian(X):
       and the variances sigma^2, an n x 1 vector
     """
     m = len(X)
-
+    mu = np.mean(X,axis=0)
+    sigma2 = np.var(X, axis=0)
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the mean of the data and the variances
     #               In particular, mu(i) should contain the mean of

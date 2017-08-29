@@ -4,11 +4,11 @@ import numpy as np
 import scipy.io
 import matplotlib.pyplot as plt
 
-from estimateGaussian import estimateGaussian
-from selectThreshold import selectThreshold
-from multivariateGaussian import multivariateGaussian
-from visualizeFit import visualizeFit
-from show import show
+from ex8.estimateGaussian import estimateGaussian
+from ex8.selectThreshold import selectThreshold
+from ex8.multivariateGaussian import multivariateGaussian
+from ex8.visualizeFit import visualizeFit
+#from show import show
 
 ## Machine Learning Online Class
 #  Exercise 8 | Anomaly Detection and Collaborative Filtering
@@ -40,7 +40,7 @@ print 'Visualizing example dataset for outlier detection.'
 
 #  The following command loads the dataset. You should now have the
 #  variables X, Xval, yval in your environment
-data = scipy.io.loadmat('ex8data1.mat')
+data = scipy.io.loadmat('ex8/ex8data1.mat')
 X = data['X']
 Xval = data['Xval']
 yval = data['yval'].flatten()
@@ -50,8 +50,8 @@ plt.plot(X[:, 0], X[:, 1], 'bx')
 plt.axis([0, 30, 0, 30])
 plt.xlabel('Latency (ms)')
 plt.ylabel('Throughput (mb/s)')
-show()
-raw_input("Program paused. Press Enter to continue...")  
+#show()
+#raw_input("Program paused. Press Enter to continue...")  
 
 
 ## ================== Part 2: Estimate the dataset statistics ===================
@@ -75,9 +75,9 @@ p = multivariateGaussian(X, mu, sigma2)
 visualizeFit(X,  mu, sigma2)
 plt.xlabel('Latency (ms)')
 plt.ylabel('Throughput (mb/s)')
-show()
+#show()
 
-raw_input("Program paused. Press Enter to continue...")  
+#raw_input("Program paused. Press Enter to continue...")  
 
 ## ================== Part 3: Find Outliers ===================
 #  Now you will find a good epsilon threshold using a cross-validation set
@@ -96,9 +96,9 @@ outliers = np.where(p < epsilon, True, False)
 
 #  Draw a red circle around those outliers
 plt.plot(X[outliers, 0], X[outliers, 1], 'ro', lw=2, markersize=10, fillstyle='none', markeredgewidth=1)
-show()
+#show()
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 ## ================== Part 4: Multidimensional Outliers ===================
 #  We will now use the code from the previous part and apply it to a 
@@ -108,7 +108,7 @@ raw_input("Program paused. Press Enter to continue...")
 
 #  Loads the second dataset. You should now have the
 #  variables X, Xval, yval in your environment
-data = scipy.io.loadmat('ex8data2.mat')
+data = scipy.io.loadmat('ex8/ex8data2.mat')
 X = data['X']
 Xval = data['Xval']
 yval = data['yval'].flatten()

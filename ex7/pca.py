@@ -8,9 +8,9 @@ def pca(X):
 
     # Useful values
     m, n = X.shape
-    U=np.zeros(n)
-    S=np.zeros(n)
-    V=np.zeros(n)
+#    U=np.zeros(n)
+#    S=np.zeros(n)
+#    V=np.zeros(n)
 
     # You need to return the following variables correctly.
 
@@ -22,7 +22,10 @@ def pca(X):
     # Note: When computing the covariance matrix, remember to divide by m (the
     #       number of examples).
     #
-
+    cov = np.dot(X.T,X)/m
 
 # =========================================================================
-    return U, S, V
+    #U, S, V = np.linalg.svd(np.cov(X.T))
+    U, S, V = np.linalg.svd(cov)
+
+    return U, np.diag(S), V

@@ -17,6 +17,8 @@ def projectData(X, U, K):
 
 
     # =============================================================
-
-    Z = np.zeros(10)
+    
+    U_reduced = U[:,:K]
+    Z = np.dot(X, U_reduced)
+    
     return Z
