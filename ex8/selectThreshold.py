@@ -1,5 +1,6 @@
 import numpy as np
 import math
+from sklearn.metrics import f1_score
 
 def selectThreshold(yval, pval):
     """
@@ -13,6 +14,8 @@ def selectThreshold(yval, pval):
 
     stepsize = (np.max(pval) - np.min(pval)) / 1000.0
     for epsilon in np.arange(np.min(pval),np.max(pval), stepsize):
+        F1 = f1_score(yval,pval<epsilon)
+                
 
         # ====================== YOUR CODE HERE ======================
         # Instructions: Compute the F1 score of choosing epsilon as the
@@ -24,9 +27,10 @@ def selectThreshold(yval, pval):
         # Note: You can use predictions = (pval < epsilon) to get a binary vector
         #       of 0's and 1's of the outlier predictions
 
-
+ 
         # =============================================================
-
+        
+        
         if F1 > bestF1:
            bestF1 = F1
            bestEpsilon = epsilon
