@@ -20,21 +20,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io
 from scipy.optimize import minimize
-from show import show
+#from show import show
 
 ## =============== Part 1: Loading movie ratings dataset ================
 #  You will start by loading the movie ratings dataset to understand the
 #  structure of the data.
 #
-from cofiCostFunc import cofiCostFunc
-from checkCostFunction import checkCostFunction
-from loadMovieList import loadMovieList
-from normalizeRatings import normalizeRatings
+from ex8.cofiCostFunc import cofiCostFunc
+from ex8.checkCostFunction import checkCostFunction
+from ex8.loadMovieList import loadMovieList
+from ex8.normalizeRatings import normalizeRatings
 
 print 'Loading movie ratings dataset.'
 
 #  Load data
-data = scipy.io.loadmat('ex8_movies.mat')
+data = scipy.io.loadmat('ex8/ex8_movies.mat')
 Y = data['Y']
 R = data['R'].astype(bool)
 #  Y is a 1682x943 matrix, containing ratings (1-5) of 1682 movies on 
@@ -52,9 +52,9 @@ plt.figure()
 plt.imshow(Y, aspect='equal', origin='upper', extent=(0, Y.shape[1], 0, Y.shape[0]/2.0))
 plt.ylabel('Movies')
 plt.xlabel('Users')
-show()
+#show()
 
-raw_input("Program paused. Press Enter to continue...")
+#raw_input("Program paused. Press Enter to continue...")
 
 ## ============ Part 2: Collaborative Filtering Cost Function ===========
 #  You will now implement the cost function for collaborative filtering.
@@ -63,7 +63,7 @@ raw_input("Program paused. Press Enter to continue...")
 #  cofiCostFunc.m to return J.
 
 #  Load pre-trained weights (X, Theta, num_users, num_movies, num_features)
-data = scipy.io.loadmat('ex8_movieParams.mat')
+data = scipy.io.loadmat('ex8/ex8_movieParams.mat')
 X = data['X']
 Theta = data['Theta']
 num_users = data['num_users']

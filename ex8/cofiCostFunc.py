@@ -39,7 +39,13 @@ def cofiCostFunc(params, Y, R, num_users, num_movies, num_features, Lambda):
 
 
     # =============================================================
-
+    
+    #cost function
+    J = np.sum((((np.dot(Theta, X.T).T-Y)*R)**2)/2.,axis=(0,1)) + (Lambda/2.)*(np.sum(Theta**2,axis=(0,1))+np.sum(X**2,axis=(0,1)))
+    #gradient
+    X_grad= np.dot(((np.dot(Theta,X.T).T-Y)*R),Theta) + Lambda*X
+    Theta_grad= np.dot(((np.dot(Theta,X.T).T-Y)*R).T,X) + Lambda*Theta
+    
     grad = np.hstack((X_grad.T.flatten(),Theta_grad.T.flatten()))
 
     return J, grad
